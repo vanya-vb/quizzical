@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --font-karla: "Karla", sans-serif;
+    --font-inter: "Inter", sans-serif;
+    --color-light-blue: #D6DBF5;
+    --color-blue: #4D5B9E;
+    --color-dark-blue: #293264;
+}
+
+:root {
+    font-family: "Inter";
+}
+
