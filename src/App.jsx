@@ -5,13 +5,13 @@ import NotFound from "./components/NotFound/NotFound"
 
 function App() {
 
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/quiz" element={<Quiz />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  )
+    return (
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/quiz" element={<Quiz />} />
+            <Route path="*" element={<NotFound />} />
+        </Routes>
+    )
 }
 
 export default App

@@ -1,4 +1,4 @@
-import { useEffect, useEffectEvent, useState } from "react";
+import { useEffect, useState } from "react";
 
 export const useQuestions = () => {
     const [questions, setQuestions] = useState([]);
@@ -20,7 +20,14 @@ export const useQuestions = () => {
                 const quiz = data.results;
 
                 const newQuiz = quiz.map(question => {
-                    const allAnswers = [question["correct_answer"], ...question["incorrect_answers"]];
+                    const correctAnswer = question["correct_answer"];
+                    const incorrectAnswers = question["incorrect_answers"];
+                    const allAnswers = [];
+                    
+                    const index = Math.floor(Math.random() * (incorrectAnswers.length + 1));
+                    allAnswers.push(...incorrectAnswers);
+                    allAnswers.splice(index, 0, correctAnswer);
+
                     return { ...question, allAnswers };
                 });
 
