@@ -1,16 +1,20 @@
-# React + Vite
+# Quizzical
+Quizzical is a quiz app that pulls questions from the [Open Trivia Database]((https://opentdb.com/api_config.php)) and gives users the chance to answer them. Once finished, users can check the correct answers and see their score.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> [Deployment link](https://quizzical-beta-black.vercel.app/)
 
-Currently, two official plugins are available:
+## Features
+- Pulls trivia questions from a live API
+- Multiple-choice questions with randomized answer order
+- Check answers to see correct and incorrect selections
+- Displays the total score after submission
+- Reset quiz to try a new set of questions
+- Responsive UI with Tailwind CSS styling
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech stack
+- Vite
+- React
+- React Router
+- Tailwind
+- [Open Trivia DB](https://opentdb.com/api_config.php)
+- [html-entities](https://www.npmjs.com/package/html-entities#user-content-decodetext-options)
