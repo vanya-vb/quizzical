@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useQuestions } from "../../api/questionsApi";
 import Question from "./Question/Question";
 import Spinner from "../Spinner/Spinner";
+import { toast } from "react-toastify";
 
 export default function Quiz() {
     const { questions, setQuestions, loading, error } = useQuestions();
@@ -15,6 +16,11 @@ export default function Quiz() {
 
     const handleCheck = (e) => {
         e.preventDefault();
+
+        if (Object.keys(answers).length < 5) {
+            toast.warning('Please answer the questions!');
+            return;
+        }
 
         let correctCount = 0;
 
