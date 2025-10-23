@@ -16,6 +16,7 @@ export default function Answer({ option, title, correctAnswer, selectedAnswer, s
     const isCorrect = option === correctAnswer;
 
     let style = {};
+    
     if (showResult) {
         if (isCorrect) style = correctStyling;
         else if (isSelected && !isCorrect) style = errorStyling;
@@ -29,6 +30,7 @@ export default function Answer({ option, title, correctAnswer, selectedAnswer, s
                 value={option}
                 onChange={() => setSelectedAnswer(option)}
                 checked={isSelected}
+                disabled={showResult}
                 className="peer hidden"
             />
             <span
