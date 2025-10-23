@@ -18,3 +18,10 @@ Quizzical is a quiz app that pulls questions from the [Open Trivia Database]((ht
 - Tailwind
 - [Open Trivia DB](https://opentdb.com/api_config.php)
 - [html-entities](https://www.npmjs.com/package/html-entities#user-content-decodetext-options)
+
+## Example images
+![Home Screen](./public/quiz-1.png)
+<br><br><br>
+![Quiz](./public/quiz-2.png)
+<br><br><br>
+![Results](./public/quiz-3.png)
