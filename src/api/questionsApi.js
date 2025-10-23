@@ -49,5 +49,5 @@ export const useQuestions = () => {
         fetchQuiz();
     }, [questions]);
 
-    return { questions, loading, error }
+    return { questions, setQuestions, loading, error }
 }

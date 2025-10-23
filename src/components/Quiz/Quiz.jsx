@@ -2,9 +2,10 @@ import Question from "./Question/Question";
 import Spinner from "../Spinner/Spinner";
 import { useQuestions } from "../../api/questionsApi";
 import { useState } from "react";
+import Report from "../Report/Report";
 
 export default function Quiz() {
-    const { questions, loading, error } = useQuestions();
+    const { questions, setQuestions, loading, error } = useQuestions();
     const [answers, setAnswers] = useState({});
     const [showResult, setShowResult] = useState(false);
 
@@ -49,6 +50,7 @@ export default function Quiz() {
                     )
                 )
             }
+            {showResult && <Report setShowResult={setShowResult} setAnswers={setAnswers} setQuestions={setQuestions} />}
         </section>
     );
 };

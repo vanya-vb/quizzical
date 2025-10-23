@@ -14,3 +14,7 @@
     font-family: "Karla", sans-serif;
 }
 
+#root {
+    position: relative;
+}
+
