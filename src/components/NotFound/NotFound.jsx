@@ -18,7 +18,7 @@ export default function NotFound() {
                     to="/"
                     className="inline-block bg-blue text-white text-center py-2 px-10 rounded-lg cursor-pointer shadow-md tracking-wide"
                 >
-                    Back to home
+                    Back to quiz
                 </Link>
             </div>
         </section>

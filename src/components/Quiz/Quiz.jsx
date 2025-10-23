@@ -29,14 +29,14 @@ export default function Quiz() {
     };
 
     const resetQuiz = () => {
-        setQuestions([]);
-        setScore(0);
         setAnswers({});
+        setScore(0);
+        setQuestions([]);
         setShowResult(false);
     };
 
     return (
-        <section className="relative w-full min-h-screen bg-blue-50 p-8 flex justify-center items-center">
+        <section className="relative w-full min-h-screen sm:h-screen bg-blue-50 p-8 flex justify-center items-center">
             <img src="/src/assets/yellow.png" alt="" className="absolute top-0 right-0" />
             <img src="/src/assets/blue.png" alt="" className="absolute bottom-0 left-0" />
             {
@@ -59,7 +59,7 @@ export default function Quiz() {
                                 />
                             ))}
                             {showResult && (
-                                <p className="text-center text-dark-blue font-bold text-2xl mt-3">
+                                <p className="text-center text-dark-blue font-bold text-xl sm:text-2xl mt-3 z-1">
                                     You scored {score}/{questions.length} answers
                                 </p>
                             )}

@@ -11,7 +11,7 @@ export const useQuestions = () => {
 
         const fetchQuiz = async () => {
             try {
-                const response = await fetch("https://opentdb.com/api.php?amount=5&type=multiple");
+                const response = await fetch("https://opentdb.com/api.php?amount=5&difficulty=easy&type=multiple");
 
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
