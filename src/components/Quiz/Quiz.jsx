@@ -1,9 +1,21 @@
 import Question from "./Question/Question";
 import Spinner from "../Spinner/Spinner";
 import { useQuestions } from "../../api/questionsApi";
+import { useState } from "react";
 
 export default function Quiz() {
     const { questions, loading, error } = useQuestions();
+    const [answers, setAnswers] = useState({});
+    const [showResult, setShowResult] = useState(false);
+
+    const handleSelect = (question, answer) => {
+        setAnswers(prev => ({ ...prev, [question]: answer }));
+    };
+
+    const handleCheck = (e) => {
+        e.preventDefault();
+        setShowResult(true);
+    };
 
     return (
         <section className="relative w-full min-h-screen bg-blue-50 p-8 flex justify-center items-center">
@@ -16,13 +28,16 @@ export default function Quiz() {
                     questions.length === 0 ? (
                         <p className="text-2xl font-semibold text-blue italic">{error}</p>
                     ) : (
-                        <form className="w-full lg:w-3xl flex flex-col">
+                        <form onSubmit={handleCheck} className="w-full lg:w-3xl flex flex-col">
                             {questions.map(({ question, allAnswers, "correct_answer": correctAnswer }) => (
                                 <Question
                                     key={question}
                                     title={question}
                                     answers={allAnswers}
                                     correctAnswer={correctAnswer}
+                                    selectedAnswer={answers[question]}
+                                    setSelectedAnswer={answer => handleSelect(question, answer)}
+                                    showResult={showResult}
                                 />
                             ))}
                             <button
