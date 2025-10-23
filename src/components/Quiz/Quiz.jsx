@@ -4,6 +4,9 @@ import Question from "./Question/Question";
 import Spinner from "../Spinner/Spinner";
 import { toast } from "react-toastify";
 
+import blueVectorShape from '../../assets/blue.png';
+import yellowVectorShape from '../../assets/yellow.png';
+
 export default function Quiz() {
     const { questions, setQuestions, loading, error } = useQuestions();
     const [answers, setAnswers] = useState({});
@@ -43,8 +46,8 @@ export default function Quiz() {
 
     return (
         <section className="relative w-full min-h-screen sm:h-screen bg-blue-50 p-8 flex justify-center items-center">
-            <img src="/src/assets/yellow.png" alt="" className="absolute top-0 right-0" />
-            <img src="/src/assets/blue.png" alt="" className="absolute bottom-0 left-0" />
+            <img src={yellowVectorShape} alt="" className="absolute top-0 right-0" />
+            <img src={blueVectorShape} alt="" className="absolute bottom-0 left-0" />
             {
                 loading ? (
                     <Spinner />
@@ -53,9 +56,9 @@ export default function Quiz() {
                         <p className="text-2xl font-semibold text-blue italic">{error}</p>
                     ) : (
                         <form onSubmit={handleCheck} className="w-full lg:w-3xl flex flex-col">
-                            {questions.map(({ question, allAnswers, "correct_answer": correctAnswer }) => (
+                            {questions.map(({ question, allAnswers, "correct_answer": correctAnswer }, index) => (
                                 <Question
-                                    key={question}
+                                    key={index}
                                     title={question}
                                     answers={allAnswers}
                                     correctAnswer={correctAnswer}
