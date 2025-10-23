@@ -1,12 +1,12 @@
+import { useState } from "react";
+import { useQuestions } from "../../api/questionsApi";
 import Question from "./Question/Question";
 import Spinner from "../Spinner/Spinner";
-import { useQuestions } from "../../api/questionsApi";
-import { useState } from "react";
-import Report from "../Report/Report";
 
 export default function Quiz() {
     const { questions, setQuestions, loading, error } = useQuestions();
     const [answers, setAnswers] = useState({});
+    const [score, setScore] = useState(0);
     const [showResult, setShowResult] = useState(false);
 
     const handleSelect = (question, answer) => {
@@ -15,7 +15,24 @@ export default function Quiz() {
 
     const handleCheck = (e) => {
         e.preventDefault();
+
+        let correctCount = 0;
+
+        questions.forEach(q => {
+            if (answers[q.question] === q["correct_answer"]) {
+                correctCount++;
+            }
+        });
+
+        setScore(correctCount);
         setShowResult(true);
+    };
+
+    const resetQuiz = () => {
+        setQuestions([]);
+        setScore(0);
+        setAnswers({});
+        setShowResult(false);
     };
 
     return (
@@ -41,16 +58,22 @@ export default function Quiz() {
                                     showResult={showResult}
                                 />
                             ))}
+                            {showResult && (
+                                <p className="text-center text-dark-blue font-bold text-2xl mt-3">
+                                    You scored {score}/{questions.length} answers
+                                </p>
+                            )}
                             <button
+                                type={showResult ? "button" : "submit"}
+                                onClick={showResult ? resetQuiz : null}
                                 className="bg-blue text-white self-center text-center py-2 px-10 rounded-lg cursor-pointer shadow-md tracking-wide mt-6 z-1"
                             >
-                                Check answers
+                                {showResult ? "Reset quiz" : "Check answers"}
                             </button>
                         </form>
                     )
                 )
             }
-            {showResult && <Report setShowResult={setShowResult} setAnswers={setAnswers} setQuestions={setQuestions} />}
         </section>
     );
 };
