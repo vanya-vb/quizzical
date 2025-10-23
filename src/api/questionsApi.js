@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { decode } from 'html-entities';
 
 export const useQuestions = () => {
     const [questions, setQuestions] = useState([]);
@@ -20,15 +21,21 @@ export const useQuestions = () => {
                 const quiz = data.results;
 
                 const newQuiz = quiz.map(question => {
-                    const correctAnswer = question["correct_answer"];
-                    const incorrectAnswers = question["incorrect_answers"];
-                    const allAnswers = [];
-                    
+                    const questionTitle = decode(question["question"]);
+                    const correctAnswer = decode(question["correct_answer"]);
+                    const incorrectAnswers = question["incorrect_answers"].map(answer => decode(answer));
+                    const allAnswers = [...incorrectAnswers];
+
                     const index = Math.floor(Math.random() * (incorrectAnswers.length + 1));
-                    allAnswers.push(...incorrectAnswers);
                     allAnswers.splice(index, 0, correctAnswer);
 
-                    return { ...question, allAnswers };
+                    return {
+                        ...question,
+                        question: questionTitle,
+                        correct_answer: correctAnswer,
+                        incorrect_answers: incorrectAnswers,
+                        allAnswers
+                    };
                 });
 
                 setQuestions(newQuiz);
